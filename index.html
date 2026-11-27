@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Iceberrys</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="The Iceberrys is a gentle 3D animated show for children aged 2 to 8 about a cave bear family growing up in Iceberry Valley, the one warm valley in a frozen world.">
+<meta property="og:title" content="The Iceberrys">
+<meta property="og:description" content="A cave bear family, a warm valley in a frozen world, and a Story Wall where every day's lesson gets painted. Coming 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+/* Layout: one long valley walk — sky (hero) down through the village to the Story Wall at the bottom. Single soft-light theme by design: pastel, low-contrast backgrounds gentle on young eyes. */
+:root {
+  color-scheme: light;
+  --frost: #eef5fb;        /* page ground, pale ice blue */
+  --snow: #fbfdff;         /* cards */
+  --ink: #3b3f5c;          /* text, soft navy, never pure black */
+  --ink-soft: #6b6f8e;
+  --lilac: #c9b8ec;        /* iceberry glow, the show's accent */
+  --lilac-deep: #7b62b8;
+  --mint: #cdeedd;
+  --peach: #ffd9c7;
+  --butter: #fff0b8;
+  --sky: #cfe3f7;
+  --honey: #d9a36a;
+  --line: #dde6f1;
+  --display: "Fredoka", "Baloo 2", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+  --body: "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --radius: 28px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { margin: 0; background: var(--frost); color: var(--ink); font-family: var(--body); font-size: 1.0625rem; line-height: 1.65; }
+img { max-width: 100%; display: block; }
+a { color: var(--lilac-deep); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--lilac-deep); outline-offset: 3px; border-radius: 8px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; color: var(--ink); }
+h2 { font-size: clamp(1.9rem, 4.5vw, 2.75rem); }
+h3 { font-size: 1.35rem; }
+p { margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-family: var(--display); font-weight: 600; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; color: var(--lilac-deep); }
+.lede { color: var(--ink-soft); font-size: 1.15rem; max-width: 60ch; }
+section { padding-block: clamp(56px, 9vw, 104px); }
+.sec-head { display: grid; gap: 12px; margin-bottom: 40px; max-width: 720px; }
+
+/* NAV */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(238,245,251,.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--frost); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.logo { font-family: var(--display); font-weight: 700; font-size: 1.45rem; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.logo .berry { width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 12%, var(--lilac) 40%, var(--lilac-deep) 100%); box-shadow: 0 0 14px var(--lilac); }
+.nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-weight: 700; font-size: .95rem; }
+.nav ul a { color: var(--ink-soft); text-decoration: none; }
+.nav ul a:hover { color: var(--lilac-deep); }
+@media (max-width: 760px) { .nav ul { display: none; } }
+
+/* HERO */
+.hero { position: relative; overflow: hidden; background: linear-gradient(180deg, #dcd3f5 0%, #d6e8f8 45%, var(--frost) 100%); padding-block: clamp(48px, 8vw, 96px) 0; }
+.aurora { position: absolute; inset: -20% -10% auto; height: 70%; pointer-events: none; opacity: .7;
+  background: radial-gradient(60% 40% at 25% 40%, rgba(186,238,215,.8), transparent 70%), radial-gradient(50% 35% at 70% 30%, rgba(255,214,232,.75), transparent 70%), radial-gradient(40% 30% at 50% 60%, rgba(201,184,236,.7), transparent 70%);
+  animation: drift 18s ease-in-out infinite alternate; }
+@keyframes drift { from { transform: translateX(-3%) } to { transform: translateX(3%) } }
+.hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr 1fr; gap: 32px; align-items: end; }
+.hero-copy { display: grid; gap: 22px; padding-bottom: clamp(40px, 7vw, 96px); min-width: 0; }
+.hero h1 { font-size: clamp(3rem, 9vw, 6rem); font-weight: 700; letter-spacing: -.01em; color: #4a3f7a; }
+.hero h1 span { display: block; font-size: .38em; font-weight: 600; color: var(--lilac-deep); letter-spacing: .02em; margin-bottom: 4px; }
+.hero .lede { color: #4f5478; font-size: clamp(1.1rem, 2vw, 1.3rem); }
+.badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.badge { background: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.9); border-radius: 999px; padding: 8px 16px; font-weight: 700; font-size: .92rem; color: var(--ink); }
+.badge.soon { background: var(--ink); color: var(--snow); border-color: var(--ink); }
+.hero-cast { display: flex; align-items: flex-end; justify-content: center; min-width: 0; max-width: 600px; justify-self: center; width: 100%; filter: drop-shadow(0 18px 24px rgba(91,74,150,.18)); }
+.hero-cast img { height: auto; }
+.hero-cast .c-juni { width: 30%; margin-right: -3%; }
+.hero-cast .c-ama { width: 39%; position: relative; z-index: 1; }
+.hero-cast .c-tobo { width: 34%; margin-left: -3%; position: relative; z-index: 2; }
+.hills { position: relative; display: block; width: 100%; height: 70px; margin-top: -2px; }
+@media (max-width: 820px) { .hero-grid { grid-template-columns: 1fr; } .hero-copy { padding-bottom: 8px; } .hero-cast { max-width: 440px; } }
+
+/* WORLD */
+.seasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.season { border-radius: var(--radius); padding: 28px; display: grid; gap: 10px; align-content: start; }
+.season .icon { width: 56px; height: 56px; }
+.season.frost { background: var(--sky); }
+.season.drip { background: var(--mint); }
+.season.glow { background: #e6dcf8; }
+.world-rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 40px; margin-top: 40px; }
+.rule { display: grid; grid-template-columns: 14px 1fr; gap: 14px; align-items: start; }
+.rule::before { content: ""; width: 14px; height: 14px; margin-top: 7px; border-radius: 50%; background: var(--lilac); box-shadow: 0 0 10px var(--lilac); }
+.rule strong { font-family: var(--display); font-weight: 600; font-size: 1.1rem; display: block; }
+.rule p { color: var(--ink-soft); }
+@media (max-width: 760px) { .seasons, .world-rules { grid-template-columns: 1fr; } }
+
+/* CAST */
+.family { background: var(--snow); border-block: 1px solid var(--line); }
+.cast { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.member { display: grid; grid-template-rows: auto 1fr; border-radius: var(--radius); overflow: hidden; background: var(--frost); border: 1px solid var(--line); }
+.portrait { aspect-ratio: 4 / 5; overflow: hidden; position: relative; background: #ddd4d0; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; }
+.portrait .tag { position: absolute; left: 12px; bottom: 12px; background: rgba(255,255,255,.85); border-radius: 999px; padding: 4px 12px; font-size: .78rem; font-weight: 700; color: var(--ink-soft); }
+.portrait.soon { display: grid; place-items: center; }
+.portrait.soon svg { width: 58%; height: auto; }
+.m-body { padding: 22px 24px 26px; display: grid; gap: 8px; align-content: start; }
+.m-name { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.m-name h3 { font-size: 1.6rem; }
+.m-role { font-weight: 700; color: var(--lilac-deep); font-size: .95rem; }
+.m-body p { color: var(--ink-soft); }
+.m-item { font-size: .92rem; color: var(--ink); }
+.m-item b { font-family: var(--display); font-weight: 600; }
+@media (max-width: 900px) { .cast { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .cast { grid-template-columns: 1fr; } }
+
+/* NEIGHBOURS */
+.neighbours { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.nb { background: var(--snow); border-radius: 22px; padding: 22px 24px; display: grid; gap: 6px; align-content: start; border: 1px solid var(--line); }
+.nb .sp { font-size: .85rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+.nb h3 { font-size: 1.25rem; }
+.nb p { color: var(--ink-soft); font-size: .98rem; }
+.grownups { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grownups .nb { background: var(--butter); border-color: transparent; }
+@media (max-width: 900px) { .neighbours { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .neighbours, .grownups { grid-template-columns: 1fr; } }
+
+/* STORY WALL */
+.wall { background: linear-gradient(180deg, var(--frost), #f3ecfb); }
+.wall-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+.steps { display: grid; gap: 14px; list-style: none; margin: 0; padding: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; background: var(--snow); border-radius: 20px; padding: 16px 20px; border: 1px solid var(--line); }
+.steps li::before { content: counter(s); width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 1.3rem; background: var(--peach); color: var(--ink); }
+.steps li:last-child::before { background: var(--lilac); }
+.steps b { font-family: var(--display); font-weight: 600; font-size: 1.1rem; display: block; }
+.steps .t { color: var(--ink-soft); font-size: .95rem; }
+.steps .min { font-size: .8rem; font-weight: 700; color: var(--lilac-deep); letter-spacing: .04em; }
+.wall-art { border-radius: var(--radius); background: #8a6e5c; padding: 22px; box-shadow: inset 0 0 40px rgba(0,0,0,.25); }
+.wall-art svg { width: 100%; height: auto; display: block; }
+@media (max-width: 860px) { .wall-grid { grid-template-columns: 1fr; } }
+
+/* EPISODES */
+.eps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.ep { background: var(--snow); border-radius: 22px; padding: 22px 24px; border: 1px solid var(--line); display: grid; gap: 6px; align-content: start; }
+.ep .n { font-family: var(--display); font-weight: 600; color: var(--lilac-deep); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.ep h3 { font-size: 1.2rem; }
+.ep p { color: var(--ink-soft); font-size: .96rem; }
+.ep .lesson { font-size: .85rem; font-weight: 700; color: var(--ink); background: var(--mint); border-radius: 999px; padding: 3px 12px; justify-self: start; margin-top: 6px; }
+@media (max-width: 900px) { .eps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .eps { grid-template-columns: 1fr; } }
+
+/* PARENTS */
+.parents { background: var(--snow); border-block: 1px solid var(--line); }
+.promise { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.pr { border-radius: 22px; padding: 22px; display: grid; gap: 8px; align-content: start; }
+.pr:nth-child(1) { background: var(--sky); }
+.pr:nth-child(2) { background: var(--mint); }
+.pr:nth-child(3) { background: var(--peach); }
+.pr:nth-child(4) { background: #e6dcf8; }
+.pr h3 { font-size: 1.15rem; }
+.pr p { font-size: .96rem; color: #4f5478; }
+@media (max-width: 900px) { .promise { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .promise { grid-template-columns: 1fr; } }
+
+/* CONTACT */
+.contact-card { background: linear-gradient(135deg, #e6dcf8, #d6e8f8); border-radius: 36px; padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
+.contact-card .mail { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.mail code { font-family: var(--display); font-weight: 600; font-size: clamp(1.2rem, 3vw, 1.6rem); background: var(--snow); border-radius: 14px; padding: 10px 18px; color: var(--ink); user-select: all; word-break: break-all; }
+.copy { font: 700 .95rem var(--body); background: var(--ink); color: var(--snow); border: 0; border-radius: 999px; padding: 12px 20px; cursor: pointer; }
+.copy:hover { background: var(--lilac-deep); }
+.contact-card ul { margin: 0; padding-left: 1.1em; color: #4f5478; display: grid; gap: 6px; }
+@media (max-width: 820px) { .contact-card { grid-template-columns: 1fr; } }
+
+footer { padding-block: 40px 56px; color: var(--ink-soft); font-size: .92rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="berry" aria-hidden="true"></span>The Iceberrys</a>
+    <ul>
+      <li><a href="#valley">The valley</a></li>
+      <li><a href="#family">The family</a></li>
+      <li><a href="#neighbours">Neighbours</a></li>
+      <li><a href="#episodes">Episodes</a></li>
+      <li><a href="#parents">For parents</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1><span>Welcome to Iceberry Valley</span>The Iceberrys</h1>
+      <p class="lede">In a frozen world, one valley stays warm. A cave bear family and their neighbours grow up, go to school, work and solve everyday problems together, then paint each day's lesson on the Story Wall.</p>
+      <div class="badges">
+        <span class="badge soon">Coming 2027 on YouTube</span>
+        <span class="badge">Ages 2 to 8</span>
+        <span class="badge">7-minute episodes</span>
+      </div>
+    </div>
+    <div class="hero-cast" aria-label="Juni, Ama and Tobo Iceberry">
+      <img class="c-juni" src="img/juni-cut.webp" alt="Juni, a young cave bear in a red knitted hood, holding a charcoal stick" width="399" height="751">
+      <img class="c-ama" src="img/ama-cut.webp" alt="Ama, the mother cave bear, in a paint-stained apron with lilac fingertips" width="489" height="778">
+      <img class="c-tobo" src="img/tobo-cut.webp" alt="Tobo, a round little cave bear with big yellow mittens on a string" width="472" height="651">
+    </div>
+  </div>
+  <svg class="hills" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path fill="#eef5fb" d="M0 40 C180 10 320 10 480 30 S800 70 980 38 S1300 6 1440 30 V70 H0Z"/></svg>
+</header>
+
+<main>
+  <section id="valley">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">The world</span>
+        <h2>One warm valley in an endless ice age</h2>
+        <p class="lede">Hot springs keep Iceberry Valley green while glaciers and blizzards stay outside. Animals from across the frozen lands have settled here and built a village together. Inside the valley, the year has three seasons.</p>
+      </div>
+      <div class="seasons">
+        <div class="season frost">
+          <svg class="icon" viewBox="0 0 56 56" aria-hidden="true"><g stroke="#5b7fae" stroke-width="3.5" stroke-linecap="round" fill="none"><path d="M28 6v44M9 17l38 22M9 39l38-22"/><path d="M22 10l6 6 6-6M22 46l6-6 6 6"/></g></svg>
+          <h3>Frost</h3>
+          <p>Snowy and cosy. Sledges, warm soup and long nights by the iceberry lamps.</p>
+        </div>
+        <div class="season drip">
+          <svg class="icon" viewBox="0 0 56 56" aria-hidden="true"><path d="M28 6C20 20 14 28 14 36a14 14 0 0 0 28 0c0-8-6-16-14-30z" fill="#7cc4a2"/><path d="M22 36a6 6 0 0 0 6 6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          <h3>Drip</h3>
+          <p>Melting and muddy. Everything grows, and the beavers are busy at the dam.</p>
+        </div>
+        <div class="season glow">
+          <svg class="icon" viewBox="0 0 56 56" aria-hidden="true"><circle cx="20" cy="32" r="11" fill="#b69ce6"/><circle cx="36" cy="26" r="10" fill="#c9b8ec"/><circle cx="31" cy="40" r="8" fill="#9f84d9"/><circle cx="17" cy="28" r="3" fill="#fff" opacity=".8"/><circle cx="33" cy="22" r="2.6" fill="#fff" opacity=".8"/><path d="M36 16c2-6 6-8 10-8" stroke="#7cc4a2" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          <h3>Glow</h3>
+          <p>The iceberries ripen and glow at night, and the aurora lights up the whole sky.</p>
+        </div>
+      </div>
+      <div class="world-rules">
+        <div class="rule"><div><strong>Everyone is a neighbour</strong><p>Mammoths, rhinos, beavers, foxes, hares and owls live side by side. There are no villains, and nobody is ever in danger from anyone else.</p></div></div>
+        <div class="rule"><div><strong>Ice-age tools, no screens</strong><p>Homes are carved from stone and timber. Clever inventions run on spring steam, pulleys and sledges, and the market works by trading.</p></div></div>
+        <div class="rule"><div><strong>Art is how the valley remembers</strong><p>Every family paints on the Story Wall in the Great Cave, and the village puts on shadow plays at night.</p></div></div>
+        <div class="rule"><div><strong>What is an iceberry?</strong><p>A glowing berry that grows only at the icy edge of the warm springs. It lights the lamps, dyes the paint and gives the valley its name.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="family" id="family">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Meet the family</span>
+        <h2>The Iceberrys</h2>
+        <p class="lede">The Iceberrys are cave bears, a real ice-age species with a high domed forehead and a short muzzle. Their fur is warm honey brown with frost-white tips on the ears, and the grown-ups grow tiny tufts of moss on their shoulders.</p>
+      </div>
+      <div class="cast">
+        <article class="member">
+          <div class="portrait"><img src="img/juni.webp" alt="Juni Iceberry concept art" loading="lazy" width="520" height="903"><span class="tag">Concept art</span></div>
+          <div class="m-body">
+            <div class="m-name"><h3>Juni</h3><span class="m-role">Big sister, 6</span></div>
+            <p>Curious about everything and always asking "why?". She wants to explore the Far Ice and hates being told to wait.</p>
+            <p class="m-item"><b>Look for:</b> her red knitted hood and the charcoal stick she draws with.</p>
+          </div>
+        </article>
+        <article class="member">
+          <div class="portrait"><img src="img/tobo.webp" alt="Tobo Iceberry concept art" loading="lazy" width="520" height="903"><span class="tag">Concept art</span></div>
+          <div class="m-body">
+            <div class="m-name"><h3>Tobo</h3><span class="m-role">Little brother, 4</span></div>
+            <p>Loud, funny and all action. He copies everything Juni does and has very big feelings.</p>
+            <p class="m-item"><b>Look for:</b> oversized yellow mittens on a string, and one boot that is always untied.</p>
+          </div>
+        </article>
+        <article class="member">
+          <div class="portrait"><img src="img/ama.webp" alt="Ama Iceberry concept art" loading="lazy" width="520" height="903"><span class="tag">Concept art</span></div>
+          <div class="m-body">
+            <div class="m-name"><h3>Ama</h3><span class="m-role">Mum, Keeper of the Story Wall</span></div>
+            <p>Calm and artistic. She looks after the Great Cave, where the whole village comes to paint and put on plays.</p>
+            <p class="m-item"><b>Look for:</b> a paint-stained apron and fingertips dyed lilac by iceberry paint.</p>
+          </div>
+        </article>
+        <article class="member">
+          <div class="portrait soon" style="background:#dfeedd"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="#a9c9a2"><circle cx="24" cy="30" r="11"/><circle cx="76" cy="30" r="11"/><ellipse cx="50" cy="56" rx="34" ry="32"/><ellipse cx="50" cy="36" rx="22" ry="20"/></g><ellipse cx="50" cy="68" rx="13" ry="10" fill="#cfe2c9"/></svg><span class="tag">Portrait coming soon</span></div>
+          <div class="m-body">
+            <div class="m-name"><h3>Bo</h3><span class="m-role">Dad, ice-cutter</span></div>
+            <p>Big, gentle and goofy. He works at the Ice Quarry, sings badly and is terrible at hide-and-seek.</p>
+            <p class="m-item"><b>Look for:</b> moss on both shoulders and a carved wooden ice-pick.</p>
+          </div>
+        </article>
+        <article class="member">
+          <div class="portrait soon" style="background:#f6ecd2"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="#e0cc98"><circle cx="25" cy="32" r="10"/><circle cx="75" cy="32" r="10"/><ellipse cx="50" cy="58" rx="33" ry="30"/><ellipse cx="50" cy="40" rx="21" ry="18"/></g><ellipse cx="50" cy="68" rx="12" ry="9" fill="#f1e5c4"/></svg><span class="tag">Portrait coming soon</span></div>
+          <div class="m-body">
+            <div class="m-name"><h3>Nana</h3><span class="m-role">Grandma</span></div>
+            <p>Wise and cheeky. She remembers the Big Freeze and tells stories with shadow puppets.</p>
+            <p class="m-item"><b>Look for:</b> a woven grass shawl and a walking stick topped with a glowing iceberry.</p>
+          </div>
+        </article>
+        <article class="member">
+          <div class="portrait soon" style="background:#ffe4d8"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="#f0bfa8"><circle cx="27" cy="34" r="9"/><circle cx="73" cy="34" r="9"/><ellipse cx="50" cy="56" rx="30" ry="28"/></g><ellipse cx="50" cy="66" rx="11" ry="8" fill="#fbdccd"/></svg><span class="tag">Portrait coming soon</span></div>
+          <div class="m-body">
+            <div class="m-name"><h3>Mimi</h3><span class="m-role">Baby sister, 1</span></div>
+            <p>Babbles, grabs everything and laughs at everything. Wherever Mimi goes, her blanket goes too.</p>
+            <p class="m-item"><b>Look for:</b> the green blanket she drags everywhere.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="neighbours">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">The village</span>
+        <h2>Neighbours, school and work</h2>
+        <p class="lede">Six more families live in the valley, each with a kid the same age as an Iceberry kid and a grown-up with an important job.</p>
+      </div>
+      <div class="neighbours">
+        <div class="nb"><span class="sp">Woolly mammoths</span><h3>The Oros</h3><p>Tula is Juni's best friend: the biggest kid at school, gentle, and scared of breaking things. Her dad keeps the Warm Springs and her mum is the valley healer.</p></div>
+        <div class="nb"><span class="sp">Woolly rhinos</span><h3>The Rokas</h3><p>They run the Bun Stall at the market. Roko is loud and loves to win.</p></div>
+        <div class="nb"><span class="sp">Giant beavers</span><h3>The Bebas</h3><p>The valley's engineers build bridges, pulleys and the dam. Kiko is Tobo's best friend and a tireless inventor.</p></div>
+        <div class="nb"><span class="sp">Arctic foxes</span><h3>The Fens</h3><p>New arrivals from the Far Ice. Papa Fen is the messenger, and Suki is still finding her feet.</p></div>
+        <div class="nb"><span class="sp">Snow hares</span><h3>The Hopsas</h3><p>Mama Pia grows roots and grains on the terraces with her twelve kids. Nobody has ever counted them all correctly.</p></div>
+        <div class="nb"><span class="sp">Ducks</span><h3>Quack and Waddle</h3><p>The twins fly in every Glow season, and everyone is sad when they leave.</p></div>
+      </div>
+      <div class="grownups">
+        <div class="nb"><span class="sp">Snowy owl</span><h3>Teacher Ola</h3><p>Runs the Little Den school. Patient, a little dramatic, and she loves a good question.</p></div>
+        <div class="nb"><span class="sp">Musk ox</span><h3>Grandpa Moku</h3><p>Drives the school sledge. Grumpy on the outside and sweet underneath.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wall" id="story-wall">
+    <div class="wrap wall-grid">
+      <div style="display:grid; gap:24px; min-width:0">
+        <div class="sec-head" style="margin:0">
+          <span class="eyebrow">Every episode</span>
+          <h2>It all ends at the Story Wall</h2>
+          <p class="lede">Each 7-minute story teaches one small thing. At the end, the family paints the day's lesson on the cave wall in pictures, so any child in any language can follow along.</p>
+        </div>
+        <ol class="steps">
+          <li><div><span class="min">30 SECONDS</span><b>A small problem</b><span class="t">Something goes wrong, the way it does in real family life.</span></div></li>
+          <li><div><span class="min">5 MINUTES</span><b>The adventure</b><span class="t">The kids try to fix it themselves, with a little help from the grown-ups.</span></div></li>
+          <li><div><span class="min">1 MINUTE</span><b>The turn</b><span class="t">Someone notices a feeling, and everything changes.</span></div></li>
+          <li><div><span class="min">30 SECONDS</span><b>The Story Wall</b><span class="t">The family paints what they learned, and the aurora seems to copy it.</span></div></li>
+        </ol>
+      </div>
+      <div class="wall-art" role="img" aria-label="A cave wall painting of bears, a mammoth, iceberries and the aurora">
+        <svg viewBox="0 0 400 300">
+          <rect width="400" height="300" rx="18" fill="#c9a68a"/>
+          <path d="M20 70 Q100 20 200 55 T380 45" stroke="#bfe9d6" stroke-width="14" fill="none" stroke-linecap="round" opacity=".9"/>
+          <path d="M30 95 Q120 55 210 85 T370 75" stroke="#e7d6f7" stroke-width="10" fill="none" stroke-linecap="round" opacity=".9"/>
+          <g fill="#7a4f37"><circle cx="90" cy="178" r="26"/><circle cx="72" cy="155" r="8"/><circle cx="108" cy="155" r="8"/><ellipse cx="90" cy="232" rx="30" ry="34"/>
+          <circle cx="150" cy="200" r="18"/><circle cx="138" cy="184" r="6"/><circle cx="162" cy="184" r="6"/><ellipse cx="150" cy="240" rx="21" ry="24"/></g>
+          <g fill="#6f6aa8"><ellipse cx="285" cy="215" rx="58" ry="40"/><circle cx="240" cy="190" r="26"/><path d="M222 205 q-14 30 6 50" stroke="#6f6aa8" stroke-width="10" fill="none" stroke-linecap="round"/><rect x="250" y="240" width="14" height="34" rx="6"/><rect x="300" y="240" width="14" height="34" rx="6"/></g>
+          <path d="M218 214 q-18 10 -14 26" stroke="#f3ead9" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <g fill="#b69ce6"><circle cx="190" cy="130" r="9"/><circle cx="205" cy="140" r="8"/><circle cx="182" cy="146" r="7"/></g>
+          <path d="M120 200 L135 200" stroke="#7a4f37" stroke-width="7" stroke-linecap="round"/>
+          <g fill="#fff6cf" opacity=".9"><circle cx="340" cy="120" r="3"/><circle cx="60" cy="118" r="2.5"/><circle cx="250" cy="120" r="2"/></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="episodes">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Season one</span>
+        <h2>A first look at the stories</h2>
+        <p class="lede">Season one has 26 episodes about feelings, friendship, growing up, early maths and the natural world. Here are a few of them.</p>
+      </div>
+      <div class="eps">
+        <article class="ep"><span class="n">Episode 1</span><h3>The First Frost Day</h3><p>Juni starts at the Little Den, and Tobo is not old enough to go.</p><span class="lesson">Waiting your turn</span></article>
+        <article class="ep"><span class="n">Episode 2</span><h3>Too Big for the Sledge</h3><p>Tula is too big for the school sledge, so the kids find a way for everyone to ride.</p><span class="lesson">Including everyone</span></article>
+        <article class="ep"><span class="n">Episode 3</span><h3>The Iceberry Share</h3><p>Five kids, twelve berries, and everyone wants the shiniest one.</p><span class="lesson">Sharing fairly</span></article>
+        <article class="ep"><span class="n">Episode 5</span><h3>Where Does the Steam Go?</h3><p>Juni follows the steam from the springs up to the sky and back down as snow.</p><span class="lesson">The water cycle</span></article>
+        <article class="ep"><span class="n">Episode 12</span><h3>The Shadow Play Flop</h3><p>Juni freezes in front of the whole village at her first shadow play.</p><span class="lesson">Trying again</span></article>
+        <article class="ep"><span class="n">Episode 19</span><h3>The Longest Night</h3><p>Tobo is scared of the dark on the longest night of Frost.</p><span class="lesson">Fear of the dark</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="parents" id="parents">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">For parents</span>
+        <h2>Made to be gentle</h2>
+        <p class="lede">The Iceberrys is made for children everywhere, with jokes and honest feelings for the grown-ups watching alongside them.</p>
+      </div>
+      <div class="promise">
+        <div class="pr"><h3>Pictures first</h3><p>Every story makes sense with the sound off. There are no written words on screen, so it works in any language.</p></div>
+        <div class="pr"><h3>Soft on the eyes</h3><p>Gentle pastel colours, slow camera moves and calm pacing, with no flashing or frantic cuts.</p></div>
+        <div class="pr"><h3>Real feelings</h3><p>Waiting, losing, sharing, saying sorry and being brave. Grown-ups get tired and make mistakes too, and they say sorry.</p></div>
+        <div class="pr"><h3>For every family</h3><p>No real-world countries, flags or religious holidays. The valley has its own festivals, like the Thaw Festival and the First Glow.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-card">
+        <div style="display:grid; gap:16px; min-width:0">
+          <span class="eyebrow">Say hello</span>
+          <h2>For parents, teachers and partners</h2>
+          <p class="lede" style="color:#4f5478">Questions, ideas or partnership enquiries are welcome. Please ask a grown-up to write to us.</p>
+          <div class="mail"><code id="email">hello@iceberrys.com</code><button class="copy" id="copyBtn" type="button">Copy address</button></div>
+        </div>
+        <ul>
+          <li>Episodes premiere on YouTube in 2027.</li>
+          <li>Licensing, broadcast and press enquiries are welcome.</li>
+          <li>This website does not use cookies, trackers or sign-up forms.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 The Iceberrys. All characters, names and artwork are original works. All rights reserved.</span>
+    <span>iceberrys.com</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('copyBtn').addEventListener('click', function () {
+  var btn = this, text = document.getElementById('email').textContent;
+  function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy address'; }, 1800); }
+  function fallback() { var r = document.createRange(); r.selectNodeContents(document.getElementById('email')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); done('Selected'); }
+  try { navigator.clipboard.writeText(text).then(function () { done('Copied'); }, fallback); } catch (e) { fallback(); }
+});
+</script>
+</body>
+</html>
