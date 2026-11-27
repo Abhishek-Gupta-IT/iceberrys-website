@@ -117,12 +117,20 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* NEIGHBOURS */
 .neighbours { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.nb { background: var(--snow); border-radius: 22px; padding: 22px 24px; display: grid; gap: 6px; align-content: start; border: 1px solid var(--line); }
+.nb { background: var(--snow); border-radius: 22px; padding: 18px; display: grid; grid-template-columns: 104px 1fr; gap: 18px; align-items: start; border: 1px solid var(--line); }
+.nb .av { width: 104px; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: #ddd4d0; }
+.nb .av img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.nb .av.soon { display: grid; place-items: center; background: var(--butter); }
+.nb .tx { display: grid; gap: 6px; min-width: 0; padding-top: 4px; }
 .nb .sp { font-size: .85rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
 .nb h3 { font-size: 1.25rem; }
 .nb p { color: var(--ink-soft); font-size: .98rem; }
 .grownups { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .grownups .nb { background: var(--butter); border-color: transparent; }
+.lineup { margin: 48px 0 0; display: grid; gap: 14px; }
+.lineup-scroll { overflow-x: auto; border-radius: var(--radius); background: #ebe7e4; border: 1px solid var(--line); }
+.lineup-scroll img { width: 100%; min-width: 760px; height: auto; }
+.lineup p { color: var(--ink-soft); font-size: .95rem; }
 @media (max-width: 900px) { .neighbours { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .neighbours, .grownups { grid-template-columns: 1fr; } }
 
@@ -278,7 +286,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           </div>
         </article>
         <article class="member">
-          <div class="portrait soon" style="background:#dfeedd"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="#a9c9a2"><circle cx="24" cy="30" r="11"/><circle cx="76" cy="30" r="11"/><ellipse cx="50" cy="56" rx="34" ry="32"/><ellipse cx="50" cy="36" rx="22" ry="20"/></g><ellipse cx="50" cy="68" rx="13" ry="10" fill="#cfe2c9"/></svg><span class="tag">Portrait coming soon</span></div>
+          <div class="portrait"><img src="img/bo.webp" alt="Bo Iceberry concept art" loading="lazy" width="520" height="650"><span class="tag">Concept art</span></div>
           <div class="m-body">
             <div class="m-name"><h3>Bo</h3><span class="m-role">Dad, ice-cutter</span></div>
             <p>Big, gentle and goofy. He works at the Ice Quarry, sings badly and is terrible at hide-and-seek.</p>
@@ -286,7 +294,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           </div>
         </article>
         <article class="member">
-          <div class="portrait soon" style="background:#f6ecd2"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="#e0cc98"><circle cx="25" cy="32" r="10"/><circle cx="75" cy="32" r="10"/><ellipse cx="50" cy="58" rx="33" ry="30"/><ellipse cx="50" cy="40" rx="21" ry="18"/></g><ellipse cx="50" cy="68" rx="12" ry="9" fill="#f1e5c4"/></svg><span class="tag">Portrait coming soon</span></div>
+          <div class="portrait"><img src="img/nana.webp" alt="Nana Iceberry concept art" loading="lazy" width="520" height="650"><span class="tag">Concept art</span></div>
           <div class="m-body">
             <div class="m-name"><h3>Nana</h3><span class="m-role">Grandma</span></div>
             <p>Wise and cheeky. She remembers the Big Freeze and tells stories with shadow puppets.</p>
@@ -294,7 +302,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           </div>
         </article>
         <article class="member">
-          <div class="portrait soon" style="background:#ffe4d8"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="#f0bfa8"><circle cx="27" cy="34" r="9"/><circle cx="73" cy="34" r="9"/><ellipse cx="50" cy="56" rx="30" ry="28"/></g><ellipse cx="50" cy="66" rx="11" ry="8" fill="#fbdccd"/></svg><span class="tag">Portrait coming soon</span></div>
+          <div class="portrait"><img src="img/mimi.webp" alt="Mimi Iceberry concept art" loading="lazy" width="520" height="650"><span class="tag">Concept art</span></div>
           <div class="m-body">
             <div class="m-name"><h3>Mimi</h3><span class="m-role">Baby sister, 1</span></div>
             <p>Babbles, grabs everything and laughs at everything. Wherever Mimi goes, her blanket goes too.</p>
@@ -313,17 +321,21 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <p class="lede">Six more families live in the valley, each with a kid the same age as an Iceberry kid and a grown-up with an important job.</p>
       </div>
       <div class="neighbours">
-        <div class="nb"><span class="sp">Woolly mammoths</span><h3>The Oros</h3><p>Tula is Juni's best friend: the biggest kid at school, gentle, and scared of breaking things. Her dad keeps the Warm Springs and her mum is the valley healer.</p></div>
-        <div class="nb"><span class="sp">Woolly rhinos</span><h3>The Rokas</h3><p>They run the Bun Stall at the market. Roko is loud and loves to win.</p></div>
-        <div class="nb"><span class="sp">Giant beavers</span><h3>The Bebas</h3><p>The valley's engineers build bridges, pulleys and the dam. Kiko is Tobo's best friend and a tireless inventor.</p></div>
-        <div class="nb"><span class="sp">Arctic foxes</span><h3>The Fens</h3><p>New arrivals from the Far Ice. Papa Fen is the messenger, and Suki is still finding her feet.</p></div>
-        <div class="nb"><span class="sp">Snow hares</span><h3>The Hopsas</h3><p>Mama Pia grows roots and grains on the terraces with her twelve kids. Nobody has ever counted them all correctly.</p></div>
-        <div class="nb"><span class="sp">Ducks</span><h3>Quack and Waddle</h3><p>The twins fly in every Glow season, and everyone is sad when they leave.</p></div>
+        <div class="nb"><div class="av"><img src="img/tula.webp" alt="Tula Oro, a young woolly mammoth with a blue headband" loading="lazy"></div><div class="tx"><span class="sp">Woolly mammoths</span><h3>The Oros</h3><p>Tula is Juni's best friend: the biggest kid at school, gentle, and scared of breaking things. Her dad keeps the Warm Springs and her mum is the valley healer.</p></div></div>
+        <div class="nb"><div class="av"><img src="img/roko.webp" alt="Roko Roka, a young woolly rhino with an orange headband" loading="lazy"></div><div class="tx"><span class="sp">Woolly rhinos</span><h3>The Rokas</h3><p>They run the Bun Stall at the market. Roko is loud and loves to win.</p></div></div>
+        <div class="nb"><div class="av"><img src="img/kiko.webp" alt="Kiko Beba, a young beaver with a tool belt and goggles" loading="lazy"></div><div class="tx"><span class="sp">Giant beavers</span><h3>The Bebas</h3><p>The valley's engineers build bridges, pulleys and the dam. Kiko is Tobo's best friend and a tireless inventor.</p></div></div>
+        <div class="nb"><div class="av"><img src="img/suki.webp" alt="Suki Fen, a young arctic fox in a lilac poncho" loading="lazy"></div><div class="tx"><span class="sp">Arctic foxes</span><h3>The Fens</h3><p>New arrivals from the Far Ice. Papa Fen is the messenger, and Suki is still finding her feet.</p></div></div>
+        <div class="nb"><div class="av"><img src="img/pia.webp" alt="Mama Pia Hopsa, a snow hare with a straw hat and a basket of carrots" loading="lazy"></div><div class="tx"><span class="sp">Snow hares</span><h3>The Hopsas</h3><p>Mama Pia grows roots and grains on the terraces with her twelve kids. Nobody has ever counted them all correctly.</p></div></div>
+        <div class="nb"><div class="av soon" aria-hidden="true"><svg viewBox="0 0 60 60" width="56" height="56"><ellipse cx="30" cy="38" rx="18" ry="14" fill="#f3d98a"/><circle cx="24" cy="22" r="10" fill="#f3d98a"/><path d="M14 22 l-8 3 8 3z" fill="#f2b27a"/><circle cx="22" cy="20" r="1.8" fill="#3b3f5c"/></svg></div><div class="tx"><span class="sp">Ducks</span><h3>Quack and Waddle</h3><p>The twins fly in every Glow season, and everyone is sad when they leave.</p></div></div>
       </div>
       <div class="grownups">
-        <div class="nb"><span class="sp">Snowy owl</span><h3>Teacher Ola</h3><p>Runs the Little Den school. Patient, a little dramatic, and she loves a good question.</p></div>
-        <div class="nb"><span class="sp">Musk ox</span><h3>Grandpa Moku</h3><p>Drives the school sledge. Grumpy on the outside and sweet underneath.</p></div>
+        <div class="nb"><div class="av"><img src="img/ola.webp" alt="Teacher Ola, a snowy owl with round glasses holding a slate" loading="lazy"></div><div class="tx"><span class="sp">Snowy owl</span><h3>Teacher Ola</h3><p>Runs the Little Den school. Patient, a little dramatic, and she loves a good question.</p></div></div>
+        <div class="nb"><div class="av"><img src="img/moku.webp" alt="Grandpa Moku, a musk ox in a striped scarf" loading="lazy"></div><div class="tx"><span class="sp">Musk ox</span><h3>Grandpa Moku</h3><p>Drives the school sledge. Grumpy on the outside and sweet underneath.</p></div></div>
       </div>
+      <figure class="lineup">
+        <div class="lineup-scroll"><img src="img/cast-lineup.webp" alt="The cast side by side by height: Bo, Ama, Nana, Tula, Roko, Juni, Teacher Ola, Tobo, Suki, Kiko and Mimi" loading="lazy" width="2000" height="555"></div>
+        <p>Everyone side by side, from Papa Bo down to baby Mimi. All artwork is concept art and still in development.</p>
+      </figure>
     </div>
   </section>
 
