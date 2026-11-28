@@ -178,6 +178,16 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (max-width: 560px) { .eps { grid-template-columns: 1fr; } }
 
 /* PARENTS */
+.story { background: linear-gradient(180deg, #fff7f1, var(--frost)); }
+.story-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: st; }
+.story-step { background: var(--snow); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 26px; display: grid; gap: 10px; align-content: start; position: relative; }
+.story-step .ic { width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; font-size: 1.6rem; }
+.story-step:nth-child(1) .ic { background: var(--peach); }
+.story-step:nth-child(2) .ic { background: var(--lilac); }
+.story-step:nth-child(3) .ic { background: var(--mint); }
+.story-step .when { font-family: var(--display); font-weight: 600; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.story-quote { margin-top: 28px; text-align: center; font-family: var(--display); font-weight: 500; font-size: clamp(1.2rem, 2.6vw, 1.55rem); color: var(--lilac-deep); max-width: 48ch; margin-inline: auto; }
+@media (max-width: 860px) { .story-steps { grid-template-columns: 1fr; } }
 .parents { background: var(--snow); border-block: 1px solid var(--line); }
 .promise { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .pr { border-radius: 22px; padding: 22px; display: grid; gap: 8px; align-content: start; }
@@ -212,6 +222,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <li><a href="#family">The family</a></li>
       <li><a href="#neighbours">Neighbours</a></li>
       <li><a href="#episodes">Episodes</a></li>
+      <li><a href="#story">Our story</a></li>
       <li><a href="#parents">For parents</a></li>
     </ul>
   </div>
@@ -416,6 +427,22 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <article class="ep"><span class="n">Episode 12</span><h3>The Shadow Play Flop</h3><p>Juni freezes in front of the whole village at her first shadow play.</p><span class="lesson">Trying again</span></article>
         <article class="ep"><span class="n">Episode 19</span><h3>The Longest Night</h3><p>Tobo is scared of the dark on the longest night of Frost.</p><span class="lesson">Fear of the dark</span></article>
       </div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Our story</span>
+        <h2>It started at the dinner table</h2>
+        <p class="lede">The Iceberrys began as a family idea and grew into a whole valley with the help of AI agents.</p>
+      </div>
+      <div class="story-steps">
+        <article class="story-step"><div class="ic" aria-hidden="true">&#127858;</div><span class="when">The idea</span><h3>A family dinner</h3><p>Two parents, a two-and-a-half-year-old and a ten-year-old, chatting over dinner about the show they would love to watch together. A gentle bear family in a snowy valley was the idea everyone agreed on.</p></article>
+        <article class="story-step"><div class="ic" aria-hidden="true">&#10024;</div><span class="when">The making</span><h3>From family idea to AI agents</h3><p>After that first spark, everything else was made with AI agents: the characters, the valley, the stories, the voices, the animation and this website. The family stays in the loop, choosing what feels right.</p></article>
+        <article class="story-step"><div class="ic" aria-hidden="true">&#128155;</div><span class="when">The promise</span><h3>Made for kids, with care</h3><p>Every choice is checked against one question: is this good for little ones? Soft colours, calm pacing, kind stories and no ads or tracking on this site.</p></article>
+      </div>
+      <p class="story-quote">From a family idea to AI agents, and this is the result.</p>
     </div>
   </section>
 
