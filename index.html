@@ -92,6 +92,15 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hills { position: relative; display: block; width: 100%; height: 70px; margin-top: -2px; }
 @media (max-width: 820px) { .hero-grid { grid-template-columns: 1fr; } .hero-copy { padding-bottom: 8px; } .hero-cast { max-width: 440px; } }
 
+/* VALLEY GALLERY */
+.places { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 48px; }
+.place { position: relative; margin: 0; border-radius: 20px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--sky); }
+.place img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.place.big { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; border-radius: var(--radius); }
+.place figcaption { position: absolute; left: 10px; bottom: 10px; background: rgba(255,255,255,.88); color: var(--ink); border-radius: 999px; padding: 4px 12px; font-weight: 700; font-size: .82rem; }
+.place.big figcaption { left: 16px; bottom: 16px; font-size: 1rem; padding: 6px 16px; }
+@media (max-width: 760px) { .places { grid-template-columns: 1fr 1fr; gap: 10px; } .place.big { aspect-ratio: 16 / 9; grid-row: span 1; } .place figcaption { font-size: .7rem; padding: 3px 9px; left: 7px; bottom: 7px; } }
+
 /* WORLD */
 .seasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .season { border-radius: var(--radius); padding: 28px; display: grid; gap: 10px; align-content: start; }
@@ -236,6 +245,17 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <span class="eyebrow">The world</span>
         <h2>One warm valley in an endless ice age</h2>
         <p class="lede">Hot springs keep Iceberry Valley green while glaciers and blizzards stay outside. Animals from across the frozen lands have settled here and built a village together. Inside the valley, the year has three seasons.</p>
+      </div>
+      <div class="places">
+        <figure class="place big"><img src="img/place-valley.webp" alt="Iceberry Valley from above: a green valley ringed by snow, with the Warm Springs in the middle, cave homes, terraces and the market" width="476" height="264"><figcaption>Iceberry Valley</figcaption></figure>
+        <figure class="place"><img src="img/place-home.webp" alt="The Iceberry cave home" loading="lazy" width="476" height="264"><figcaption>The Iceberry cave home</figcaption></figure>
+        <figure class="place"><img src="img/place-great-cave.webp" alt="The Great Cave and Story Wall" loading="lazy" width="476" height="264"><figcaption>The Great Cave and Story Wall</figcaption></figure>
+        <figure class="place"><img src="img/place-school.webp" alt="The Little Den school" loading="lazy" width="476" height="264"><figcaption>The Little Den school</figcaption></figure>
+        <figure class="place"><img src="img/place-springs.webp" alt="The Warm Springs" loading="lazy" width="476" height="264"><figcaption>The Warm Springs</figcaption></figure>
+        <figure class="place"><img src="img/place-market.webp" alt="Market Square" loading="lazy" width="476" height="264"><figcaption>Market Square</figcaption></figure>
+        <figure class="place"><img src="img/place-workshop.webp" alt="The Beaver Workshop" loading="lazy" width="476" height="264"><figcaption>The Beaver Workshop</figcaption></figure>
+        <figure class="place"><img src="img/place-quarry.webp" alt="The Ice Quarry" loading="lazy" width="476" height="264"><figcaption>The Ice Quarry</figcaption></figure>
+        <figure class="place"><img src="img/place-lookout.webp" alt="Lookout Rock" loading="lazy" width="476" height="264"><figcaption>Lookout Rock</figcaption></figure>
       </div>
       <div class="seasons">
         <div class="season frost">
