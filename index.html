@@ -42,7 +42,8 @@
   --radius: 28px;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+@media (max-width: 760px) { html { scroll-padding-top: 100px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
 body { margin: 0; background: var(--frost); color: var(--ink); font-family: var(--body); font-size: 1.0625rem; line-height: 1.65; }
 img { max-width: 100%; display: block; }
@@ -67,7 +68,13 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-weight: 700; font-size: .95rem; }
 .nav ul a { color: var(--ink-soft); text-decoration: none; }
 .nav ul a:hover { color: var(--lilac-deep); }
-@media (max-width: 760px) { .nav ul { display: none; } }
+@media (max-width: 760px) {
+  .nav .wrap { flex-wrap: wrap; gap: 6px; padding-block: 8px 6px; }
+  .logo img { height: 36px; }
+  .nav ul { width: 100%; gap: 18px; overflow-x: auto; white-space: nowrap; font-size: .88rem; padding-bottom: 4px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .nav ul::-webkit-scrollbar { display: none; }
+  .nav ul li { flex: none; }
+}
 
 /* HERO */
 .hero { position: relative; overflow: hidden; background: linear-gradient(180deg, #dcd3f5 0%, #d6e8f8 45%, var(--frost) 100%); padding-block: clamp(48px, 8vw, 96px) 0; }
@@ -162,7 +169,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .steps li:last-child::before { background: var(--lilac); }
 .steps b { font-family: var(--display); font-weight: 600; font-size: 1.1rem; display: block; }
 .steps .t { color: var(--ink-soft); font-size: .95rem; }
-.steps .min { font-size: .8rem; font-weight: 700; color: var(--lilac-deep); letter-spacing: .04em; }
+.steps .min { font-size: .8rem; font-weight: 700; color: var(--lilac-deep); letter-spacing: .06em; text-transform: uppercase; }
 .wall-art { border-radius: var(--radius); background: #8a6e5c; padding: 22px; box-shadow: inset 0 0 40px rgba(0,0,0,.25); }
 .wall-art svg { width: 100%; height: auto; display: block; }
 @media (max-width: 860px) { .wall-grid { grid-template-columns: 1fr; } }
@@ -240,9 +247,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
     </div>
     <div class="hero-cast" aria-label="Juni, Ama and Tobo Iceberry">
-      <img class="c-juni" src="img/juni-cut.webp" alt="Juni, a young cave bear in a red knitted hood, holding a charcoal stick" width="399" height="751">
-      <img class="c-ama" src="img/ama-cut.webp" alt="Ama, the mother cave bear, in a paint-stained apron with lilac fingertips" width="489" height="778">
-      <img class="c-tobo" src="img/tobo-cut.webp" alt="Tobo, a round little cave bear with big yellow mittens on a string" width="472" height="651">
+      <img class="c-juni" src="img/juni-cut.webp" alt="Juni, a young cave bear in a red knitted scarf, holding a charcoal stick" width="391" height="751">
+      <img class="c-ama" src="img/ama-cut.webp" alt="Ama, the mother cave bear, in a paint-stained apron with lilac fingertips" width="491" height="778">
+      <img class="c-tobo" src="img/tobo-cut.webp" alt="Tobo, a round little cave bear with big yellow mittens on a string" width="473" height="651">
     </div>
   </div>
   <svg class="hills" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path fill="#eef5fb" d="M0 40 C180 10 320 10 480 30 S800 70 980 38 S1300 6 1440 30 V70 H0Z"/></svg>
@@ -306,7 +313,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <div class="m-body">
             <div class="m-name"><h3>Juni</h3><span class="m-role">Big sister, 6</span></div>
             <p>Curious about everything and always asking "why?". She wants to explore the Far Ice and hates being told to wait.</p>
-            <p class="m-item"><b>Look for:</b> her red knitted hood and the charcoal stick she draws with.</p>
+            <p class="m-item"><b>Look for:</b> her red knitted scarf and the charcoal stick she draws with.</p>
           </div>
         </article>
         <article class="member">
@@ -388,10 +395,10 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <p class="lede">Each story teaches one small thing. At the end, the family paints the day's lesson on the cave wall in pictures, so any child in any language can follow along.</p>
         </div>
         <ol class="steps">
-          <li><div><span class="min">30 SECONDS</span><b>A small problem</b><span class="t">Something goes wrong, the way it does in real family life.</span></div></li>
-          <li><div><span class="min">5 MINUTES</span><b>The adventure</b><span class="t">The kids try to fix it themselves, with a little help from the grown-ups.</span></div></li>
-          <li><div><span class="min">1 MINUTE</span><b>The turn</b><span class="t">Someone notices a feeling, and everything changes.</span></div></li>
-          <li><div><span class="min">30 SECONDS</span><b>The Story Wall</b><span class="t">The family paints what they learned, and the aurora seems to copy it.</span></div></li>
+          <li><div><span class="min">The start</span><b>A small problem</b><span class="t">Something goes wrong, the way it does in real family life.</span></div></li>
+          <li><div><span class="min">The middle</span><b>The adventure</b><span class="t">The kids try to fix it themselves, with a little help from the grown-ups.</span></div></li>
+          <li><div><span class="min">The turn</span><b>A change of heart</b><span class="t">Someone notices a feeling, and everything changes.</span></div></li>
+          <li><div><span class="min">The end</span><b>The Story Wall</b><span class="t">The family paints what they learned, and the aurora seems to copy it.</span></div></li>
         </ol>
       </div>
       <div class="wall-art" role="img" aria-label="A cave wall painting of bears, a mammoth, iceberries and the aurora">
@@ -414,17 +421,17 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <section id="episodes">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Season one</span>
+        <span class="eyebrow">Season 1</span>
         <h2>A first look at the stories</h2>
-        <p class="lede">Season 1 is coming in 2027. It has 26 episodes about feelings, friendship, growing up, early maths and the natural world. Here are a few of them.</p>
+        <p class="lede">Season 1 is coming in 2027. It has 26 episodes about feelings, friendship, growing up, early maths and the natural world. Here are a few of the stories.</p>
       </div>
       <div class="eps">
-        <article class="ep"><span class="n">Episode 1</span><h3>The First Frost Day</h3><p>Juni starts at the Little Den, and Tobo is not old enough to go.</p><span class="lesson">Waiting your turn</span></article>
-        <article class="ep"><span class="n">Episode 2</span><h3>Too Big for the Sledge</h3><p>Tula is too big for the school sledge, so the kids find a way for everyone to ride.</p><span class="lesson">Including everyone</span></article>
-        <article class="ep"><span class="n">Episode 3</span><h3>The Iceberry Share</h3><p>Five kids, twelve berries, and everyone wants the shiniest one.</p><span class="lesson">Sharing fairly</span></article>
-        <article class="ep"><span class="n">Episode 5</span><h3>Where Does the Steam Go?</h3><p>Juni follows the steam from the springs up to the sky and back down as snow.</p><span class="lesson">The water cycle</span></article>
-        <article class="ep"><span class="n">Episode 12</span><h3>The Shadow Play Flop</h3><p>Juni freezes in front of the whole village at her first shadow play.</p><span class="lesson">Trying again</span></article>
-        <article class="ep"><span class="n">Episode 19</span><h3>The Longest Night</h3><p>Tobo is scared of the dark on the longest night of Frost.</p><span class="lesson">Fear of the dark</span></article>
+        <article class="ep"><span class="n">Growing up</span><h3>The First Frost Day</h3><p>Juni starts at the Little Den, and Tobo is not old enough to go.</p><span class="lesson">Waiting your turn</span></article>
+        <article class="ep"><span class="n">Friendship</span><h3>Too Big for the Sledge</h3><p>Tula is too big for the school sledge, so the kids find a way for everyone to ride.</p><span class="lesson">Including everyone</span></article>
+        <article class="ep"><span class="n">Early maths</span><h3>The Iceberry Share</h3><p>Five kids, twelve berries, and everyone wants the shiniest one.</p><span class="lesson">Sharing fairly</span></article>
+        <article class="ep"><span class="n">Natural world</span><h3>Where Does the Steam Go?</h3><p>Juni follows the steam from the springs up to the sky and back down as snow.</p><span class="lesson">The water cycle</span></article>
+        <article class="ep"><span class="n">Feelings</span><h3>The Shadow Play Flop</h3><p>Juni freezes in front of the whole village at her first shadow play.</p><span class="lesson">Trying again</span></article>
+        <article class="ep"><span class="n">Being brave</span><h3>The Longest Night</h3><p>Tobo is scared of the dark on the longest night of Frost.</p><span class="lesson">Fear of the dark</span></article>
       </div>
     </div>
   </section>
