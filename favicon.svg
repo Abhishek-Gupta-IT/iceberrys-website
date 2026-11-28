@@ -1,1 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><radialGradient id="g" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#c9b8ec"/><stop offset="1" stop-color="#7b62b8"/></radialGradient></defs><circle cx="16" cy="17" r="13" fill="url(#g)"/><path d="M16 4c1-3 5-4 8-3" stroke="#7cc4a2" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Iceberrys icon">
+  <title>Iceberrys</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcd3f5"/><stop offset="1" stop-color="#cfe3f7"/></linearGradient>
+    <radialGradient id="berry" cx=".38" cy=".3" r=".85"><stop offset="0" stop-color="#efe8ff"/><stop offset=".45" stop-color="#b9a3ef"/><stop offset="1" stop-color="#7259bd"/></radialGradient>
+    <radialGradient id="ear" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#b9a3ef"/><stop offset="1" stop-color="#6c53b5"/></radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="url(#bg)"/>
+  <ellipse cx="256" cy="440" rx="150" ry="22" fill="#5b46a0" opacity=".12"/>
+  <path d="M262 118 C 290 70, 350 58, 392 76 C 362 112, 312 128, 262 118Z" fill="#8fd3b0"/>
+  <path d="M268 116 C 302 98, 336 86, 380 80" stroke="#5fb48c" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <circle cx="150" cy="168" r="50" fill="url(#ear)"/><circle cx="150" cy="168" r="26" fill="#f6f1ff"/>
+  <circle cx="362" cy="168" r="50" fill="url(#ear)"/><circle cx="362" cy="168" r="26" fill="#f6f1ff"/>
+  <circle cx="256" cy="282" r="150" fill="url(#berry)"/>
+  <ellipse cx="196" cy="214" rx="38" ry="22" fill="#fff" opacity=".55" transform="rotate(-25 196 214)"/>
+  <ellipse cx="256" cy="322" rx="62" ry="46" fill="#fbf3e8"/>
+  <ellipse cx="256" cy="300" rx="20" ry="14" fill="#5a3d4a"/>
+  <path d="M236 334 Q256 352 276 334" stroke="#5a3d4a" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <circle cx="200" cy="262" r="15" fill="#3b2f55"/><circle cx="312" cy="262" r="15" fill="#3b2f55"/>
+  <circle cx="205" cy="257" r="5" fill="#fff"/><circle cx="317" cy="257" r="5" fill="#fff"/>
+  <circle cx="168" cy="318" r="18" fill="#f7b6c8" opacity=".55"/><circle cx="344" cy="318" r="18" fill="#f7b6c8" opacity=".55"/>
+</svg>

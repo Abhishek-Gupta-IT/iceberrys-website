@@ -12,6 +12,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://iceberrys.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iceberrys.com/">
+<meta property="og:image" content="https://iceberrys.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#dcd3f5">
 <style>
 /* Layout: one long valley walk — sky (hero) down through the village to the Story Wall at the bottom. Single soft-light theme by design: pastel, low-contrast backgrounds gentle on young eyes. */
 :root {
@@ -54,7 +63,7 @@ section { padding-block: clamp(56px, 9vw, 104px); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--frost); }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
 .logo { font-family: var(--display); font-weight: 700; font-size: 1.45rem; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-.logo .berry { width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0 12%, var(--lilac) 40%, var(--lilac-deep) 100%); box-shadow: 0 0 14px var(--lilac); }
+.logo img { height: 44px; width: auto; }
 .nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-weight: 700; font-size: .95rem; }
 .nav ul a { color: var(--ink-soft); text-decoration: none; }
 .nav ul a:hover { color: var(--lilac-deep); }
@@ -69,6 +78,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr 1fr; gap: 32px; align-items: end; }
 .hero-copy { display: grid; gap: 22px; padding-bottom: clamp(40px, 7vw, 96px); min-width: 0; }
 .hero h1 { font-size: clamp(3rem, 9vw, 6rem); font-weight: 700; letter-spacing: -.01em; color: #4a3f7a; }
+.hero h1 img { width: min(560px, 100%); height: auto; margin-top: 6px; }
 .hero h1 span { display: block; font-size: .38em; font-weight: 600; color: var(--lilac-deep); letter-spacing: .02em; margin-bottom: 4px; }
 .hero .lede { color: #4f5478; font-size: clamp(1.1rem, 2vw, 1.3rem); }
 .badges { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -187,7 +197,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <body>
 <nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="#top"><span class="berry" aria-hidden="true"></span>The Iceberrys</a>
+    <a class="logo" href="#top"><img src="img/logo.svg" alt="The Iceberrys" width="780" height="290"></a>
     <ul>
       <li><a href="#valley">The valley</a></li>
       <li><a href="#family">The family</a></li>
@@ -202,7 +212,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="aurora" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <h1><span>Welcome to Iceberry Valley</span>The Iceberrys</h1>
+      <h1><span>Welcome to Iceberry Valley</span><img src="img/logo.svg" alt="The Iceberrys" width="780" height="290"></h1>
       <p class="lede">In a frozen world, one valley stays warm. A cave bear family and their neighbours grow up, go to school, work and solve everyday problems together, then paint each day's lesson on the Story Wall.</p>
       <div class="badges">
         <span class="badge soon">Coming 2027 on YouTube</span>
